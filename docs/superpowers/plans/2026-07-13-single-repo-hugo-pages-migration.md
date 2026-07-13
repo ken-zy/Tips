@@ -21,6 +21,7 @@
 - PR events build and verify only. Startup deployment is available only through `workflow_dispatch`; `push` deployment belongs to the later cleanup PR after the first production deployment succeeds.
 - No secret value may be printed. Security scans report filenames only and stop before public migration if a high-signal match exists.
 - No Hugo, PaperMod, Action, visual redesign, content-format, or SEO upgrade is included.
+- Legacy Markdown is copied byte-for-byte. Its existing trailing spaces may encode Markdown hard line breaks, so whole-tree `git diff --check` must not be used to rewrite or reject allowlisted legacy content; verify copied trees with `diff`/`cmp` and run whitespace checks only on newly authored support files.
 - The repository has no root `AGENTS.md`; reviews must record `no convention file available`.
 
 ## Dependency Admission Record
@@ -191,7 +192,10 @@ test ! -e site/.hugo_build.lock
 test -z "$(find site \( -name '.DS_Store' -o -name '._*' \) -print -quit)"
 test "$(find site/archetypes -type f | wc -l | tr -d ' ')" = "1"
 test "$(find site/content -type f | wc -l | tr -d ' ')" = "43"
-git diff --check
+diff -qr --exclude='._*' /Users/jdy/Documents/blog/Tips_hugo_source/archetypes site/archetypes
+diff -qr --exclude='._*' /Users/jdy/Documents/blog/Tips_hugo_source/content site/content
+cmp /Users/jdy/Documents/blog/Tips_hugo_source/config.yml site/config.yml
+git diff --check -- . ':(exclude)site/content/**' ':(exclude)site/archetypes/**'
 ```
 
 Expected: all tests pass; no forbidden generated or AppleDouble file is present.
@@ -519,7 +523,7 @@ git check-ignore -q site/public/index.html
 for generated in site/resources site/.hugo_build.lock; do
   if [[ -e "$generated" ]]; then git check-ignore -q "$generated"; fi
 done
-git diff --check
+git diff --check -- . ':(exclude)site/content/**' ':(exclude)site/archetypes/**'
 git submodule status
 ```
 

@@ -20,15 +20,16 @@
 
 ---
 
-### Task 1: Rewrite and synchronize the article
+### Task 1: Rewrite, synchronize, verify, and commit the article
 
 **Files:**
 - Modify: `site/content/post/codex-tutorial-subscription.md`
 - Modify: `/Users/jdy/Documents/obsidian/10_Projects/Tech/P-Codex使用教程/人人都会用Codex-订阅与支付篇.md`
+- Verify: `site/public/post/codex-tutorial-subscription/index.html` (ignored generated output)
 
 **Interfaces:**
 - Consumes: `docs/superpowers/specs/2026-07-13-subscription-payment-article-rewrite-design.md` and `/Users/jdy/Downloads/人人都会用Codex-订阅与支付篇.pdf`
-- Produces: one canonical public article body; Hugo uses `relref`, while Obsidian uses relative `.md` navigation links
+- Produces: one canonical public article body, verified Hugo output, and one focused Tips content commit; Hugo uses `relref`, while Obsidian uses relative `.md` navigation links
 
 - [ ] **Step 1: Run the new-content assertions before editing**
 
@@ -198,20 +199,7 @@ test "$(rg -c '^\- \[OpenAI：' "$article")" = 4
 
 Expected: all commands exit `0`.
 
----
-
-### Task 2: Verify rendering, repository boundaries, and source parity
-
-**Files:**
-- Verify: `site/content/post/codex-tutorial-subscription.md`
-- Verify: `/Users/jdy/Documents/obsidian/10_Projects/Tech/P-Codex使用教程/人人都会用Codex-订阅与支付篇.md`
-- Verify: `site/public/post/codex-tutorial-subscription/index.html` (ignored generated output)
-
-**Interfaces:**
-- Consumes: the two synchronized Markdown files from Task 1
-- Produces: verified Hugo output and one focused content commit; does not push or deploy
-
-- [ ] **Step 1: Build with the repository-pinned Hugo version**
+- [ ] **Step 5: Build with the repository-pinned Hugo version**
 
 Run:
 
@@ -229,7 +217,7 @@ rm -rf site/public site/resources
 
 Expected: Hugo reports version `0.105.0` and exits `0`.
 
-- [ ] **Step 2: Verify migration and repository boundaries**
+- [ ] **Step 6: Verify migration and repository boundaries**
 
 Run:
 
@@ -250,7 +238,7 @@ verified 73 legacy paths; old host absent; new origin present
 verified repository cleanup: no legacy root output tracked; migration source retained
 ```
 
-- [ ] **Step 3: Verify the rendered article**
+- [ ] **Step 7: Verify the rendered article**
 
 Run:
 
@@ -268,7 +256,7 @@ rg -q '/Tips/post/codex-tutorial-install/' "$html"
 
 Expected: all commands exit `0`.
 
-- [ ] **Step 4: Verify body parity with only approved syntax differences**
+- [ ] **Step 8: Verify body parity with only approved syntax differences**
 
 Normalize the two approved navigation differences without writing new files:
 
@@ -282,7 +270,7 @@ test "$tips_body" = "$obsidian_body"
 
 Expected: exit `0`.
 
-- [ ] **Step 5: Review and commit only the Tips article**
+- [ ] **Step 9: Review and commit only the Tips article**
 
 Run:
 

@@ -14,6 +14,7 @@
 - Free 可以使用 Codex，但本教程的完整主路线要求 Plus 或更高付费套餐。
 - Plus 价格写为 `$20/月`；人民币金额只是约数，以结账页为准。
 - 不保证任何特定银行卡、礼品卡、U 卡或第三方教程长期可用。
+- U 卡路线必须提供不依赖特定发卡方的五步通用流程，并明确 USDT 与 USDC、不同区块链网络不能互换，转错资产或网络可能造成不可逆的资金损失。
 - 开始支付路线前必须提示读者查看 OpenAI 当前支持的国家和地区；截至本文更新时，中国大陆不在支持列表中；从不支持的国家或地区访问服务，账号可能被封禁或暂停；使用来自支持国家和地区之外的付款方式，将导致用户被禁止使用 OpenAI 服务；付款成功不代表风险消失。
 - 公开正文不得出现“Git 历史中的大陆用户实操原文”或“原项目页中的支付路线”。
 - 不新增依赖，不修改 Hugo 配置、PaperMod、GitHub Actions 或 73 路径迁移清单。
@@ -25,6 +26,8 @@
 
 **Files:**
 - Modify: `site/content/post/codex-tutorial-subscription.md`
+- Modify: `docs/superpowers/specs/2026-07-13-subscription-payment-article-rewrite-design.md`
+- Modify: `docs/superpowers/plans/2026-07-13-subscription-payment-article-rewrite.md`
 - Modify: `/Users/jdy/Documents/obsidian/10_Projects/Tech/P-Codex使用教程/人人都会用Codex-订阅与支付篇.md`
 - Verify: `site/public/post/codex-tutorial-subscription/index.html` (ignored generated output)
 
@@ -37,22 +40,23 @@
 Run:
 
 ```bash
-rg -n 'Git 历史中的大陆用户实操原文|原项目页中的支付路线' \
-  site/content/post/codex-tutorial-subscription.md
-rg -q '### 路 B：U 卡' \
-  site/content/post/codex-tutorial-subscription.md
+ucard_section=$(sed -n '/^### 路 B：U 卡$/,/^### 路 C：/p' \
+  site/content/post/codex-tutorial-subscription.md)
+printf '%s\n' "$ucard_section" | rg -q '^\*\*步骤：\*\*$'
+printf '%s\n' "$ucard_section" | \
+  rg -q 'USDT 和 USDC 不是同一种资产.*网络也不能互换.*不可逆'
 ```
 
 Expected:
 
-- The first command prints the two internal-process headings.
-- The second command exits `1` because the actionable U-card section does not exist yet.
+- Both assertions exit `1`: the U-card route has references and risks, but no executable steps marker or asset/network loss warning yet.
 
 - [ ] **Step 2: Replace the Hugo article body with the approved structure**
 
 Keep the existing frontmatter unchanged. Replace everything after the closing frontmatter delimiter with this exact body:
 
 ```markdown
+
 > 这一篇解决订阅和支付问题。做完的标志：你的 ChatGPT 账号已经升级为 Plus 或更高付费套餐，并且知道它由哪个平台管理续费。
 
 系列：人人都会用 Codex · 上一篇：[第 2 篇 · 账号注册篇]({{< relref "post/codex-tutorial-account.md" >}})
@@ -115,6 +119,14 @@ Keep the existing frontmatter unchanged. Replace everything after the closing fr
 - [Bitget Wallet 官方申请说明](https://web3.bitget.com/zh/helpCenter/235)
 
 第三方教程可能包含邀请码，不使用邀请码也不影响你核对操作步骤。申请前必须自己核对当前的开卡费、年费、消费手续费、实名条件和可用地区。
+
+**步骤：**
+
+1. 先从上面的资料中选定一家发卡方，只核对它当前支持的地区、实名要求、开卡费、年费、消费手续费、支持充值的资产和区块链网络。此时不要转入资金。
+2. 通过发卡方当前的官方入口完成实名认证（KYC）并申请卡片。审核通过后，在自己的安全环境中记录卡号、有效期、安全码，以及发卡方提供的账单地址要求；这些信息属于敏感信息，不要发给他人，也不要写进公开文章或截图。
+3. 只按发卡方当前页面显示的资产和区块链网络转入一笔小额测试资金。**USDT 和 USDC 不是同一种资产，不同区块链网络也不能互换；转错资产或网络可能造成不可逆的资金损失。**
+4. 使用本教程注册的账号登录 `chatgpt.com`，选择 Plus，填写虚拟卡资料和符合发卡方要求的账单信息。提交前核对页面上的套餐价格、发卡方手续费和自动续费说明，然后只提交一次。付款结果仍以当时的结账验证为准。
+5. 返回 ChatGPT 账号设置确认 Plus 是否生效，并在发卡方交易记录中核对扣款。卡内只保留必要余额，同时记下续费和取消入口。
 
 **风险：** 这条路线需要实名认证、购买或转入 USDT，还会承担发卡方停服、冻结、资金托管和资产损失风险。如果你没有加密货币经验，不建议为了一次订阅盲目开卡。
 
@@ -209,6 +221,24 @@ for source in "$article" "$obsidian"; do
   warning_line=$(rg -n '先确认地区支持范围' "$source" | cut -d: -f1)
   routes_line=$(rg -n '^## 三、三条路线怎么选$' "$source" | cut -d: -f1)
   test "$warning_line" -lt "$routes_line"
+  ucard_section=$(sed -n '/^### 路 B：U 卡$/,/^### 路 C：/p' "$source")
+  printf '%s\n' "$ucard_section" | rg -q '^\*\*步骤：\*\*$'
+  printf '%s\n' "$ucard_section" | rg -q '^1\. 先从上面的资料中选定一家发卡方'
+  printf '%s\n' "$ucard_section" | rg -q '^2\. 通过发卡方当前的官方入口完成实名认证（KYC）并申请卡片'
+  printf '%s\n' "$ucard_section" | rg -q '^3\. 只按发卡方当前页面显示的资产和区块链网络转入一笔小额测试资金'
+  printf '%s\n' "$ucard_section" | rg -q '^4\. 使用本教程注册的账号登录 `chatgpt.com`，选择 Plus'
+  printf '%s\n' "$ucard_section" | rg -q '^5\. 返回 ChatGPT 账号设置确认 Plus 是否生效'
+  printf '%s\n' "$ucard_section" | \
+    rg -q 'USDT 和 USDC 不是同一种资产.*网络也不能互换.*不可逆的资金损失'
+  step1_line=$(printf '%s\n' "$ucard_section" | rg -n '^1\.' | cut -d: -f1)
+  step2_line=$(printf '%s\n' "$ucard_section" | rg -n '^2\.' | cut -d: -f1)
+  step3_line=$(printf '%s\n' "$ucard_section" | rg -n '^3\.' | cut -d: -f1)
+  step4_line=$(printf '%s\n' "$ucard_section" | rg -n '^4\.' | cut -d: -f1)
+  step5_line=$(printf '%s\n' "$ucard_section" | rg -n '^5\.' | cut -d: -f1)
+  test "$step1_line" -lt "$step2_line"
+  test "$step2_line" -lt "$step3_line"
+  test "$step3_line" -lt "$step4_line"
+  test "$step4_line" -lt "$step5_line"
 done
 test "$(rg -o 'https://' "$article" | wc -l | tr -d ' ')" -ge 10
 test "$(rg -c '^\- \[OpenAI：' "$article")" = 6
@@ -265,6 +295,12 @@ rg -q '三条路线怎么选' "$html"
 rg -q 'Google Play 订阅' "$html"
 rg -q 'Plasma One U 卡上手教程' "$html"
 rg -q 'Bitget Wallet 官方申请说明' "$html"
+rg -q '先从上面的资料中选定一家发卡方' "$html"
+rg -q '通过发卡方当前的官方入口完成实名认证（KYC）并申请卡片' "$html"
+rg -q '只按发卡方当前页面显示的资产和区块链网络转入一笔小额测试资金' "$html"
+rg -q '使用本教程注册的账号登录 <code>chatgpt.com</code>，选择 Plus' "$html"
+rg -q '返回 ChatGPT 账号设置确认 Plus 是否生效' "$html"
+rg -q 'USDT 和 USDC 不是同一种资产.*网络也不能互换.*不可逆的资金损失' "$html"
 rg -q '美区 Apple ID 注册保姆级教程' "$html"
 rg -q '中国大陆目前不在列表中' "$html"
 rg -q '从不支持的国家或地区访问服务，账号可能被封禁或暂停' "$html"
@@ -293,20 +329,26 @@ test "$tips_body" = "$obsidian_body"
 
 Expected: exit `0`.
 
-- [ ] **Step 9: Review and commit only the Tips article**
+- [ ] **Step 9: Review and commit only the three relevant Tips files**
 
 Run:
 
 ```bash
 git diff --check
 git status -sb
-git diff -- site/content/post/codex-tutorial-subscription.md
-git add -- site/content/post/codex-tutorial-subscription.md
-git commit -m "fix(content): rewrite subscription payment guide"
+git diff -- \
+  site/content/post/codex-tutorial-subscription.md \
+  docs/superpowers/specs/2026-07-13-subscription-payment-article-rewrite-design.md \
+  docs/superpowers/plans/2026-07-13-subscription-payment-article-rewrite.md
+git add -- \
+  site/content/post/codex-tutorial-subscription.md \
+  docs/superpowers/specs/2026-07-13-subscription-payment-article-rewrite-design.md \
+  docs/superpowers/plans/2026-07-13-subscription-payment-article-rewrite.md
+git commit -m "fix(content): add U-card execution steps"
 ```
 
 Expected:
 
-- Tips stages only `site/content/post/codex-tutorial-subscription.md`.
-- The implementation commit is `fix(content): rewrite subscription payment guide`.
+- Tips stages only the article, design, and implementation plan listed above.
+- The implementation commit is `fix(content): add U-card execution steps`.
 - The Obsidian file remains outside the Tips commit and no unrelated Obsidian change is staged.

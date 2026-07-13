@@ -1,0 +1,152 @@
+annot_module_include '#import <UIKit/UIKit.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface ViewController : UIViewController
+
+@property (nonatomic, strong, nullable) NSString *name;
+
+- (void)printName;
+
+@end
+
+NS_ASSUME_NONNULL_END
+��+v8.5a+fp-armv8	+neon+crc+crypto+dotpro+fp16fm+ras+lse+rdm+rcpc+zcm+zcz+fullfp16	+sm4+sha3+sha2+aes>�1�m`10Ҫ!�!hs`1��1,�!Ъ!�s`1"��!_��F`�F`�F`24?`��_}V���}����0�1`�`8��1
+           6�� u`1�������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������	�y`1�{`1/Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m�1^�1//
+//  ViewController.m
+//  ACKTestApp
+//
+//  Created by zy on 2022/10/20.
+//
+
+#import "ViewController.h"
+
+@interface ViewController ()
+@property (nonatomic, strong) NSString *str;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    [self printName];
+}
+
+- (void)printName {
+    NSLog(@"---%@", self.name);
+}
+
+
+@end
+��1�_P�1އ1�1��1�1�1.�1>�1N�1^�1n�1`39	��1P|`1�
+6`�y`1�{`1�%�	���"��G�v�_`���{���?�c��x��a@4�
+                                               3g	0@�f```� �$
+���~`1P��y�Zz`1Yz`1���������B��`1mm_malloc�	�Bchains/XcodeDefault.xctoolchain/usr���B؂`1sse2�B�x�`1mmx�B
+  ������1`39	��10�`1p6`@p`1Xq`1�7�%�	���"��G�v�_`���{���?�c��x��a@4�
+                                                                       3g	0@�f```� �$
+����`1P��y��p`1�p`1��e_14.0.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator16.0.sdk/usr/include/darwin_cdefs.modulemapramework/Modules/module.modulemapodulemapss.hh�	��`1�`1/Applications/Xcode_14.0.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator16.0.sdk//System/Library/Frameworks/UIKit.framework/Modules/module.modulemapframework module UIKit [system] [extern_c] {
+  umbrella header "UIKit.h"
+
+  export *
+  module * {
+    export *
+  }
+
+  explicit module UIGestureRecognizerSubclass {
+    header "UIGestureRecognizerSubclass.h"
+    export *
+  }
+
+  explicit module UIGraphicsRendererSubclass {
+      header "UIGraphicsRendererSubclass.h"
+      export *
+  }
+}
+
+��������xP�!F�!O�!�Q�!�K�1�Q�!HP�!�N�!������������������������������������������������J�!L�!��������������������������������������������������������'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:8:1>
+at '@'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:12:1>
+identifier 'interface'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:12:2>
+identifier 'ViewController'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:12:12>
+colon ':'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:12:27>
+identifier 'UIViewController'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:12:29>
+at '@'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:1>
+identifier 'property'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:2>
+l_paren '('	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:11>
+identifier 'nonatomic'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:12>
+comma ','		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:21>
+identifier 'strong'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:23>
+comma ','		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:29>
+identifier 'nullable'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:31>
+r_paren ')'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:39>
+identifier 'NSString'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:41>
+star '*'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:50>
+identifier 'name'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:51>
+semi ';'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:14:55>
+minus '-'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:16:1>
+l_paren '('	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:16:3>
+void 'void'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:16:4>
+r_paren ')'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:16:8>
+identifier 'printName'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:16:9>
+semi ';'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:16:18>
+at '@'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:18:1>
+identifier 'end'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.h:18:2>
+at '@'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:10:1>
+identifier 'interface'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:10:2>
+identifier 'ViewController'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:10:12>
+l_paren '('	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:10:27>
+r_paren ')'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:10:28>
+at '@'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:1>
+identifier 'property'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:2>
+l_paren '('	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:11>
+identifier 'nonatomic'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:12>
+comma ','		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:21>
+identifier 'strong'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:23>
+r_paren ')'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:29>
+identifier 'NSString'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:31>
+star '*'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:40>
+identifier 'str'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:41>
+semi ';'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:11:44>
+at '@'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:13:1>
+identifier 'end'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:13:2>
+at '@'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:15:1>
+identifier 'implementation'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:15:2>
+identifier 'ViewController'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:15:17>
+minus '-'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:17:1>
+l_paren '('	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:17:3>
+void 'void'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:17:4>
+r_paren ')'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:17:8>
+identifier 'viewDidLoad'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:17:9>
+l_brace '{'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:17:21>
+l_square '['	 [StartOfLine] [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:18:5>
+identifier 'super'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:18:6>
+identifier 'viewDidLoad'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:18:12>
+r_square ']'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:18:23>
+semi ';'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:18:24>
+l_square '['	 [StartOfLine] [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:20:5>
+identifier 'self'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:20:6>
+identifier 'printName'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:20:11>
+r_square ']'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:20:20>
+semi ';'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:20:21>
+r_brace '}'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:21:1>
+minus '-'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:23:1>
+l_paren '('	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:23:3>
+void 'void'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:23:4>
+r_paren ')'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:23:8>
+identifier 'printName'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:23:9>
+l_brace '{'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:23:19>
+identifier 'NSLog'	 [StartOfLine] [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:5>
+l_paren '('		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:10>
+at '@'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:11>
+string_literal '"---%@"'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:12>
+comma ','		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:19>
+identifier 'self'	 [LeadingSpace]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:21>
+period '.'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:25>
+identifier 'name'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:26>
+r_paren ')'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:30>
+semi ';'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:24:31>
+r_brace '}'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:25:1>
+at '@'	 [StartOfLine]	Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:28:1>
+identifier 'end'		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:28:2>
+eof ''		Loc=</Users/wangzeyong/Desktop/llvm-all/ACKTestApp/ACKTestApp/ViewController.m:28:5>

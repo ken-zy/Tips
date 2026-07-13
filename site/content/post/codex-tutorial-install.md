@@ -7,16 +7,18 @@ draft: false
 
 > 这一篇把 Codex 真正装进电脑。做完的标志：**你能打开 Codex 桌面端，选择一个本地项目，并让它正确说出项目里有什么。**
 
-系列：人人都会用 Codex · 主路线上一篇：[第 2 篇 · 账号注册篇]({{< relref "post/codex-tutorial-account.md" >}}) · 可选升级：[第 3 篇 · 订阅与支付篇]({{< relref "post/codex-tutorial-subscription.md" >}})
+系列：人人都会用 Codex · 上一篇：[第 3 篇 · 订阅与支付篇]({{< relref "post/codex-tutorial-subscription.md" >}})
 
 ---
 
 ## 一、开始前先检查两件事
 
 1. 电脑上的梯子保持开启，Clash Verge 的 TUN 模式也开着。
-2. 准备好第 2 篇注册的 ChatGPT 账号，确认你能在 `chatgpt.com` 正常登录。Free 和付费账号都可以继续。
+2. 准备好前两篇完成注册和订阅的 ChatGPT 账号，确认账户设置显示 Plus 或更高付费套餐，并且能在 `chatgpt.com` 正常登录。
 
-**成功标志：** 浏览器能打开 ChatGPT，登录后可以正常看到聊天界面。
+Free 当前可以试用 Codex，并且 Free 与付费套餐使用同一套 ChatGPT 登录流程；本教程的不同点是开始安装前必须确认账号已是 Plus 或更高付费套餐。
+
+**成功标志：** 浏览器能打开 ChatGPT，登录后可以看到聊天界面，并在账户设置中确认付费套餐状态。
 
 ## 二、下载并打开桌面 App
 
@@ -36,7 +38,7 @@ draft: false
 ## 三、用 ChatGPT 账号登录
 
 1. 在 App 里点击登录。
-2. 如果系统打开浏览器，就使用第 2 篇注册的**同一个 ChatGPT 账号**完成登录和授权。
+2. 如果系统打开浏览器，就使用前两篇完成注册和订阅的**同一个 ChatGPT 账号**完成登录和授权。
 3. 授权结束后回到桌面 App。官方当前流程也是直接[使用 ChatGPT 账号连接 Codex](https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan/)，不需要再注册一个 Codex 账号。
 
 如果登录过程中触发额外验证，回到[账号注册篇]({{< relref "post/codex-tutorial-account.md" >}})第四节处理。

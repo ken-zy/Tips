@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** 按 PDF 的三条支付路线和实操步骤重写 Codex 订阅与支付篇，同时删除内部 Git 过程描述并保留当前准确的 Free/Plus 口径。
+**Goal:** 按 PDF 的三条支付路线和实操步骤重写 Codex 订阅与支付篇，同时删除内部 Git 过程描述，保留当前准确的 Free/Plus 口径，并在路线前明确 OpenAI 的支持地区与账号风险。
 
 **Architecture:** 网站 Hugo Markdown 是公开发布的唯一事实来源；Obsidian Markdown 是可编辑同步稿。两份文章共用同一正文，仅 frontmatter 和前后篇链接语法不同。
 
@@ -14,6 +14,7 @@
 - Free 可以使用 Codex，但本教程的完整主路线要求 Plus 或更高付费套餐。
 - Plus 价格写为 `$20/月`；人民币金额只是约数，以结账页为准。
 - 不保证任何特定银行卡、礼品卡、U 卡或第三方教程长期可用。
+- 开始支付路线前必须提示读者查看 OpenAI 当前支持的国家和地区；截至本文更新时，中国大陆不在支持列表中；从不支持地区访问或使用不支持地区的付款方式，可能导致账号或服务被封禁、暂停或无法使用；付款成功不代表风险消失。
 - 公开正文不得出现“Git 历史中的大陆用户实操原文”或“原项目页中的支付路线”。
 - 不新增依赖，不修改 Hugo 配置、PaperMod、GitHub Actions 或 73 路径迁移清单。
 - 不提交、推送或处理 Obsidian 仓库中的其他已有修改。
@@ -74,6 +75,8 @@ Keep the existing frontmatter unchanged. Replace everything after the closing fr
 
 - **别在网页端连续反复试卡**：先核对地区、账单地址和银行的境外订阅开关，再决定是否重试。
 - **别乱试来路不明的虚拟卡**：虚拟卡的发卡方、可用地区和风控可能随时变化，还可能涉及实名信息和资金托管风险。
+
+> **先确认地区支持范围：** 开始下面任何支付路线前，先查看 OpenAI 当前的 [ChatGPT 支持国家和地区列表](https://help.openai.com/en/articles/7947663-chatgpt-supported-countries)。截至本文更新时，中国大陆目前不在列表中。OpenAI 说明，从不支持的国家或地区访问服务，或使用不支持地区的付款方式，可能导致账号或服务被封禁、暂停或无法使用；即使付款成功，也不代表这一风险已经消失。详见 [OpenAI 对不支持地区访问和付款的说明](https://help.openai.com/en/articles/9131992)。
 
 ## 三、三条路线怎么选
 
@@ -155,6 +158,8 @@ Keep the existing frontmatter unchanged. Replace everything after the closing fr
 - [OpenAI：ChatGPT Plus](https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus)
 - [OpenAI：银行卡为什么被拒](https://help.openai.com/en/articles/7232916-why-was-my-credit-card-declined)
 - [OpenAI：多币种和应用内订阅](https://help.openai.com/en/articles/10421635-multi-currency-billing)
+- [OpenAI：ChatGPT 支持的国家和地区](https://help.openai.com/en/articles/7947663-chatgpt-supported-countries)
+- [OpenAI：不支持地区的访问与付款风险](https://help.openai.com/en/articles/9131992)
 ```
 
 - [ ] **Step 3: Synchronize the Obsidian source with explicit syntax differences**
@@ -193,8 +198,17 @@ obsidian='/Users/jdy/Documents/obsidian/10_Projects/Tech/P-Codex使用教程/人
 rg -q '### 路 A：Google Play 订阅' "$article" "$obsidian"
 rg -q '### 路 B：U 卡' "$article" "$obsidian"
 rg -q '### 路 C：外区 Apple ID \+ 礼品卡' "$article" "$obsidian"
-test "$(rg -o 'https://' "$article" | wc -l | tr -d ' ')" -ge 8
-test "$(rg -c '^\- \[OpenAI：' "$article")" = 4
+for source in "$article" "$obsidian"; do
+  rg -q '中国大陆目前不在列表中' "$source"
+  rg -q '付款成功.*不代表这一风险已经消失' "$source"
+  rg -q 'https://help.openai.com/en/articles/7947663-chatgpt-supported-countries' "$source"
+  rg -q 'https://help.openai.com/en/articles/9131992' "$source"
+  warning_line=$(rg -n '先确认地区支持范围' "$source" | cut -d: -f1)
+  routes_line=$(rg -n '^## 三、三条路线怎么选$' "$source" | cut -d: -f1)
+  test "$warning_line" -lt "$routes_line"
+done
+test "$(rg -o 'https://' "$article" | wc -l | tr -d ' ')" -ge 10
+test "$(rg -c '^\- \[OpenAI：' "$article")" = 6
 ```
 
 Expected: all commands exit `0`.
@@ -249,6 +263,10 @@ rg -q 'Google Play 订阅' "$html"
 rg -q 'Plasma One U 卡上手教程' "$html"
 rg -q 'Bitget Wallet 官方申请说明' "$html"
 rg -q '美区 Apple ID 注册保姆级教程' "$html"
+rg -q '中国大陆目前不在列表中' "$html"
+rg -q '付款成功.*不代表这一风险已经消失' "$html"
+rg -q 'https://help.openai.com/en/articles/7947663-chatgpt-supported-countries' "$html"
+rg -q 'https://help.openai.com/en/articles/9131992' "$html"
 rg -q '/Tips/post/codex-tutorial-account/' "$html"
 rg -q '/Tips/post/codex-tutorial-install/' "$html"
 ! rg -q 'Git 历史中的大陆用户实操原文|原项目页中的支付路线|jiadingyi.github.io' "$html"

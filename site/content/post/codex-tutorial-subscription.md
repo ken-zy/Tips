@@ -28,6 +28,8 @@ draft: false
 - **别在网页端连续反复试卡**：先核对地区、账单地址和银行的境外订阅开关，再决定是否重试。
 - **别乱试来路不明的虚拟卡**：虚拟卡的发卡方、可用地区和风控可能随时变化，还可能涉及实名信息和资金托管风险。
 
+> **先确认地区支持范围：** 开始下面任何支付路线前，先查看 OpenAI 当前的 [ChatGPT 支持国家和地区列表](https://help.openai.com/en/articles/7947663-chatgpt-supported-countries)。截至本文更新时，中国大陆目前不在列表中。OpenAI 说明，从不支持的国家或地区访问服务，或使用不支持地区的付款方式，可能导致账号或服务被封禁、暂停或无法使用；即使付款成功，也不代表这一风险已经消失。详见 [OpenAI 对不支持地区访问和付款的说明](https://help.openai.com/en/articles/9131992)。
+
 ## 三、三条路线怎么选
 
 | 路线 | 一句话原理 | 成本口径 | 主要门槛 |
@@ -108,3 +110,5 @@ draft: false
 - [OpenAI：ChatGPT Plus](https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus)
 - [OpenAI：银行卡为什么被拒](https://help.openai.com/en/articles/7232916-why-was-my-credit-card-declined)
 - [OpenAI：多币种和应用内订阅](https://help.openai.com/en/articles/10421635-multi-currency-billing)
+- [OpenAI：ChatGPT 支持的国家和地区](https://help.openai.com/en/articles/7947663-chatgpt-supported-countries)
+- [OpenAI：不支持地区的访问与付款风险](https://help.openai.com/en/articles/9131992)

@@ -1,0 +1,5 @@
+.DS_Store
+._*
+/site/.hugo_build.lock
+/site/public/
+/site/resources/
